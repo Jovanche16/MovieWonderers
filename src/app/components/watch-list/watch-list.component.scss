@@ -1,0 +1,81 @@
+.watchlist-container {
+  width: 80%;
+  margin: auto;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.movie-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.movie-card {
+  width: 250px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.684);
+}
+
+.movie-poster {
+  width: 100%;
+  height: auto;
+}
+
+.movie-details {
+  padding: 10px;
+}
+
+.movie-title {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.movie-added-date {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.remove-button,
+.watch-button {
+  display: block;
+  width: 100%;
+  padding: 8px 0;
+  text-align: center;
+  color: #fff;
+  background-color: #ff4d4f;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.remove-button:hover,
+.watch-button:hover {
+  background-color: #e41f1c;
+}
+
+.watch-button {
+  background-color: #1890ff;
+}
+
+.watch-button:hover {
+  background-color: #096dd9;
+}
+
+@media screen and (max-width: 768px) {
+  .movie-card {
+    width: calc(50% - 20px);
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .movie-card {
+    width: calc(100% - 20px);
+  }
+}

@@ -1,0 +1,81 @@
+<app-spinner [showSpinner]="showSpinner"></app-spinner>
+
+<div class="container">
+  <h2>{{ isLogin ? 'Login' : 'Sign Up' }}</h2>
+
+  <form [formGroup]="authForm" (ngSubmit)="submitForm()">
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" id="username" formControlName="username" class="form-control">
+      <div *ngIf="authForm.get('username')?.invalid && (authForm.get('username')?.dirty || authForm.get('username')?.touched)" class="text-danger">
+        <small class="text-danger" *ngIf="authForm.get('username')?.errors?.['required']" class="form-text">Username is required</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <div class="input-group">
+        <input [type]="showPassword ? 'text' : 'password'" id="password" formControlName="password" class="form-control">
+        <div class="input-group-append">
+          <span class="input-group-text" (click)="togglePasswordVisibility()">
+            <i class="fas" [ngClass]="{'fa-eye': !showPassword, 'fa-eye-slash': showPassword}"></i>
+          </span>
+        </div>
+      </div>
+      <div *ngIf="authForm.get('password')?.invalid && (authForm.get('password')?.dirty || authForm.get('password')?.touched)" class="text-danger">
+        <small class="text-danger" *ngIf="authForm.get('password')?.errors?.['required']" class="form-text">Password is required</small>
+      </div>
+    </div>
+
+    <div *ngIf="!isLogin" class="form-group">
+      <label for="confirm-password">Confirm Password</label>
+      <div class="input-group">
+        <input [type]="showPassword ? 'text' : 'password'" id="confirm-password" formControlName="confirmPassword" class="form-control">
+      </div>
+      <div *ngIf="authForm.get('confirmPassword')?.invalid && (authForm.get('confirmPassword')?.dirty || authForm.get('confirmPassword')?.touched)" class="text-danger">
+        <small class="text-danger" *ngIf="authForm.get('confirmPassword')?.errors?.['required']" class="form-text">Confirm Password is required</small>
+      </div>
+    </div>
+
+    <!-- Additional fields for sign-up -->
+    <div *ngIf="!isLogin" class="form-group">
+      <label for="firstName">First Name</label>
+      <input type="text" id="firstName" formControlName="firstName" class="form-control">
+      <div *ngIf="authForm.get('firstName')?.invalid && (authForm.get('firstName')?.dirty || authForm.get('firstName')?.touched)" class="text-danger">
+        <small class="text-danger" *ngIf="authForm.get('firstName')?.errors?.['required']" class="form-text">First Name is required</small>
+      </div>
+    </div>
+
+    <div *ngIf="!isLogin" class="form-group">
+      <label for="lastName">Last Name</label>
+      <input type="text" id="lastName" formControlName="lastName" class="form-control">
+      <div *ngIf="authForm.get('lastName')?.invalid && (authForm.get('lastName')?.dirty || authForm.get('lastName')?.touched)" class="text-danger">
+        <small class="text-danger" *ngIf="authForm.get('lastName')?.errors?.['required']" class="form-text">Last Name is required</small>
+      </div>
+    </div>
+
+    <div *ngIf="!isLogin" class="form-group">
+      <label for="dateOfBirth">Date of Birth</label>
+      <input type="date" id="dateOfBirth" formControlName="dateOfBirth" class="form-control">
+      <div *ngIf="authForm.get('dateOfBirth')?.invalid && (authForm.get('dateOfBirth')?.dirty || authForm.get('dateOfBirth')?.touched)" class="text-danger">
+        <small class="text-danger" *ngIf="authForm.get('dateOfBirth')?.errors?.['required']" class="form-text">Date of Birth is required</small>
+      </div>
+    </div>
+
+    <div *ngIf="!isLogin" class="form-group">
+      <label for="gender">Gender</label>
+      <select id="gender" formControlName="gender" class="form-control">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+      <div *ngIf="authForm.get('gender')?.invalid && (authForm.get('gender')?.dirty || authForm.get('gender')?.touched)" class="text-danger">
+        <small class="text-danger" *ngIf="authForm.get('gender')?.errors && authForm.get('gender')?.errors?.['required']" class="form-text">Gender is required</small>
+      </div>
+    </div>
+    <!-- End of additional sign-up fields -->
+
+    <button type="submit" class="btn btn-primary">{{ isLogin ? 'Login' : 'Sign Up' }}</button>
+  </form>
+
+  <p>{{ isLogin ? 'Don\'t have an account?' : 'Already have an account?' }} <b><a (click)="toggleLoginSignup()">{{ isLogin ? 'Sign Up' : 'Login' }}</a></b></p>
+</div>

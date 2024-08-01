@@ -1,0 +1,24 @@
+.movies-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; /* Adjust alignment as needed */
+  }
+  
+  .movie-card {
+    width: 200px; /* Adjust width as needed */
+    height: 300px; /* Adjust height as needed */
+    border: 1px solid #ccc;
+    margin: 10px;
+    /* Add additional styling for movie cards */
+  }
+  
+  /* Media query for responsiveness */
+  @media (max-width: 768px) {
+    .movies-container {
+      justify-content: center; /* Center movie cards on smaller screens */
+    }
+  
+    .movie-card {
+      width: calc(50% - 20px); /* Two movie cards per row on smaller screens */
+    }
+  }

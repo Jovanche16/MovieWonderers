@@ -1,0 +1,61 @@
+<header>
+    <nav
+      class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3"
+    >
+      <div class="container">
+        <a class="navbar-brand" [routerLink]="['/']" ><i class="fas fa-film"></i> MovieRoamers</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target=".navbar-collapse"
+          aria-label="Toggle navigation"
+          [attr.aria-expanded]="isExpanded"
+          (click)="toggle()"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="navbar-collapse collapse d-sm-inline-flex justify-content-end"
+          [ngClass]="{ show: isExpanded }"
+        >
+          <ul class="navbar-nav flex-grow">
+            <li
+              class="nav-item"
+              [routerLinkActive]="['link-active']"
+              [routerLinkActiveOptions]="{ exact: true }"
+            >
+              <a class="nav-link" [routerLink]="['/']">Home</a>
+            </li>
+             <li class="nav-item" [routerLinkActive]="['link-active']">
+              <a class="nav-link" [routerLink]="['/movies']"
+                >Movies</a>
+            </li> 
+            <!-- <li class="nav-item" [routerLinkActive]="['link-active']">
+              <a class="nav-link" [routerLink]="['/series']"
+                >Series</a>
+            </li>  -->
+            <li class="nav-item" *ngIf="authService.isLoggedIn()" [routerLinkActive]="['link-active']">
+              <a class="nav-link" [routerLink]="['/watch-list']">
+                <!-- <i class="fa fa-heart"></i> -->
+                Watch list</a>
+            </li>
+            <li class="nav-item" *ngIf="!authService.isLoggedIn()" [routerLinkActive]="['link-active']">
+              <a class="nav-link" [routerLink]="['/login']">
+                <i class="fa fa-user"></i>
+                Login/Register</a>
+            </li>
+            <li class="nav-item" *ngIf="authService.isLoggedIn()">
+              <a class="nav-link" (click)="logout()">
+                <i class="fa fa-sign-out-alt"></i>
+                Log out</a>
+            </li>
+            <li class="nav-link" (click)="toggleDarkMode()">
+              <i [class]="darkModeService.isDarkModeEnabled() ? 'fa fa-moon' : 'fa fa-sun'"></i>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  

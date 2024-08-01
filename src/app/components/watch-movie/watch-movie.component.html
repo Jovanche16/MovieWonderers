@@ -1,0 +1,25 @@
+
+<div class="base">
+<div class="card">
+  <div class="card_left">
+    <img [src]="movieDetails?.posterUrl" [alt]="movieDetails?.title + ' Poster'">
+  </div>
+  <div class="card_right">
+    <h1>{{ movieDetails?.title }}</h1>
+    <div class="card_right__details">
+      <ul>
+        <li>{{ movieDetails?.releaseDate | date}}</li>
+        <li>{{ movieDetails?.runtime }} minutes</li>
+        <li>
+          {{movieDetails?.genres}}
+        </li>
+      </ul>
+    </div>
+    <div class="card_right__review">
+      <p>{{ movieDetails?.description}}</p>
+     </div>
+    <h3>Watch Trailer</h3>
+      <youtube-player [videoId]="movieDetails?.trailerUrl" [height]="360" [width]="640"></youtube-player>
+  </div>
+</div>
+</div>

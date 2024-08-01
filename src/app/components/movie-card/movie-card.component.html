@@ -1,0 +1,18 @@
+<div class="movie-card" (mouseenter)="showInfo = true" (mouseleave)="showInfo = false">
+    <img [src]="movie.posterUrl" alt="{{ movie.title }}" class="movie-poster">
+    <div class="movie-info" [class.show-info]="showInfo">
+      <h2>{{ movie.title }}</h2>
+      <p>Genres:</p>
+      <ul>
+        <li *ngFor="let genre of movie.genres">{{ genre }}</li>
+      </ul>
+      <p>Release Date: {{ movie.releaseDate | date}}</p>
+      <p>Runtime: {{ movie.runtime }}</p>
+      <p>Description: {{ movie.description | slice:0:70 }}</p>
+      <div class="actions">
+        <button (click)="playMovie()">Play</button>
+        <button (click)="addToWatchlist()">Add to Watch list</button>
+      </div>
+    </div>
+  </div>
+  

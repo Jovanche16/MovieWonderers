@@ -1,0 +1,22 @@
+<!-- app.component.html -->
+<app-spinner [showSpinner]="showSpinner"></app-spinner>
+
+<div class="watchlist-container">
+  <h2>My Watchlist</h2>
+  <div *ngIf="wachlist; else noMovies">
+    <div class="movie-row">
+      <div class="movie-card" *ngFor="let movie of wachlist">
+        <img [src]="movie.movie.posterUrl" class="movie-poster" alt="Movie Poster">
+        <div class="movie-details">
+          <h5 class="movie-title">{{ movie.movie.title }}</h5>
+          <p class="movie-added-date">Added: {{ movie.addedAt | date }}</p>
+          <button class="remove-button" (click)="removeFromWatchlist(movie.movie.id)">Remove</button>
+          <button [routerLink]="['/watch', movie.movie.id]" class="watch-button">Watch</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #noMovies>
+    <p>Your watchlist is empty.</p>
+  </ng-template>
+</div>
